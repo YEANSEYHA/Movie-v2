@@ -1,5 +1,5 @@
 <template>
-  <form >
+  <form  >
     <h3>Login</h3>
     <input type="email" placeholder="Email" >
     <input type="password" placeholder="Password" >

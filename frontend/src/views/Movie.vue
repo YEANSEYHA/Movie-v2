@@ -1,11 +1,20 @@
 <template>
+	<!-- 
+
+		    <router-link to="/dashboard/listmovies">
+             <button style="width:100%; height:50px;">Movies</button>
+            </router-link>
+	-->
 	<div class="movie-item mb-50">
+		
 		<div class="movie-poster">
-			<a href="http://localhost:8080/moviedetails"><img src="@/assets/img.jpg" alt=""></a>
+			<a href="http://localhost:8080/moviedetail"><img src="@/assets/img.jpg" alt=""></a>
+			<router-link to="/moviedetail"> </router-link>
 		</div>
 		<div class="movie-content">
 			<div class="top">
-				<h5 class="title"><a href="http://localhost:8080/moviedetails">{{ movie.title }}</a></h5>
+				
+				<h5 class="title"><a href="http://localhost:8080/moviedetail">{{ movie.title }}</a></h5>
 				<span class="date">2021 </span>
 			</div>
 			<div class="bottom">
@@ -30,7 +39,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped >
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
 /*-- Margin Bottom --*/

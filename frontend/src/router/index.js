@@ -8,6 +8,7 @@ import Signup from '../views/Auth/Signup.vue'
 import ListMovies from '../views/ListMovies.vue'
 import ListUsers from '../views/ListUsers.vue'
 import UploadMovie from '../views/UploadMovie.vue'
+import MovieDetail from '../views/MovieDetail.vue'
 const routes = [
   {
     path: '/',
@@ -50,6 +51,12 @@ const routes = [
         component: UploadMovie
       }
     ]
+  },
+  {
+    path: '/moviedetail',
+    name: 'MovieDetail',
+    component: MovieDetail
+
   }
 ]
 

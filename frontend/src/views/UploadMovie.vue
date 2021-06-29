@@ -1,164 +1,62 @@
-  
 <template>
-
-        <div class="flexbox-item flexbox-item-2">
-            <form @click.prevent="sendPost()">
-                <label for="title">Title:</label>
-                <br>
-                <input type="text"  name="title" v-model="title">
-                <br>
-
-                <label for="Genre">Genre:</label>
-                <br>
-                <input type="text"  name="genre" v-model="genre">
-                <br>
-                <br>
+  
+ <div class="flexbox-item flexbox-item-2">
+            <table class="table">
                 
+            <center>
+                <div>
+                    <form @submit.prevent="handleSubmit">
+                    <h4>Upload New Movie</h4>
+                    <input type="text" required placeholder="Movie title">
+                    <input type="text" required placeholder="Movie Genre" >
+                    <textarea required placeholder="Movie description..." ></textarea>
+                    <!-- upload playlist image -->
+                    <label label>Upload Movie Cover Image</label>
+                    <input type="file">
+                    <div div class="error"></div>
 
-                <button class="signupbtn"   >Sign Up</button>
+                    <button>Upload</button>
+                    </form>
+                </div>   
+               
+                    
+            </center>
+            </table>
+            
 
-            </form>
 
-        </div>
+
+</div>
+
 </template>
 
 <script>
-
 export default {
-    name: 'UploadMovie'
+    name: 'ListMovies'
 }
 </script>
 
 <style scoped>
+  form {
+    background: white;
+  }
+  input[type="file"] {
+    border: 0;
+    padding: 0;
+  }
+  label {
+    font-size: 12px;
+    display: block;
+    margin-top: 30px;
+  }
+  button {
+    margin-top: 20px;
+  }
+
 @import 'https://kit.fontawesome.com/a15a5a5781.js';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
 
-* {
-    box-sizing: border-box;
-}
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.navbar {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: white;
-}
-
-.brand-title {
-    font-size: 1.5rem;
-    margin: .5rem;
-}
-
-.navbar-links {
-    height: 100%;
-}
-
-.navbar-links .search-container {
-    float: right;
-}
-.navbar-links input[type=text] {
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-    border: none;
-  }
-
-.navbar-links .search-container button{
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-}
-
-.navbar-links .search-container button:hover{
-    background: #ccc;
-}
-  
-
-.navbar-links ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-links li {
-    list-style: none;
-}
-
-
-
-.navbar-links li a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: 1rem;
-}
-
-.navbar-links li:hover {
-    background-color: #555;
-}
-
-.toggle-button {
-    position: absolute;
-    top: .75rem;
-    right: 1rem;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-}
-
-.toggle-button .bar {
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-}
-
-@media (max-width: 800px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .toggle-button {
-        display: flex;
-    }
-
-    .navbar-links {
-        display: none;
-        width: 100%;
-    }
-
-    .navbar-links ul {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .navbar-links ul li {
-        text-align: center;
-    }
-
-    .navbar-links ul li a {
-        padding: .5rem 1rem;
-    }
-
-    .navbar-links.active {
-        display: flex;
-    }
-}
 /* Style for flexbox */
 .flexbox-container{
     display: flex;
@@ -196,4 +94,79 @@ body {
     color:#ffff;
     
 }
+
+/* custom font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+
+/* variables */
+:root {
+  --primary: #4f515a;
+  --secondary: #ebebeb;
+  --warning: #da0f41;
+}
+
+/* base styles  */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  color: var(--primary);
+}
+body {
+  background: #fafafa;
+}
+a {
+  text-decoration: none;
+}
+
+/* buttons */
+button, .btn { 
+  background: var(--secondary);
+  border-radius: 8px;
+  border: 0;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+}
+button:hover, .btn:hover {
+  background: var(--primary);
+  color: white;
+}
+button:disabled {
+  opacity: 0.5;
+  color: var(--primary);
+  background: var(--secondary);
+  cursor: not-allowed;
+}
+
+/* forms */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  border: 1px solid  var(--secondary);
+  background: white;
+}
+input, textarea {
+  border: 0;
+  border-bottom: 1px solid var(--secondary);
+  padding: 10px;
+  outline: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px auto;
+}
+
+/* error text */
+.error {
+  color: var(--warning);
+  font-size: 14px;
+  margin: 16px 0;
+}
+
+
 </style>
