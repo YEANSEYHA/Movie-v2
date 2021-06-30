@@ -5,7 +5,7 @@ import {getMovies, getMovieById, createMovie} from '../controller/movieControlle
 
 
 
-router.route('/').get(getMovies).post(protect, admin, createMovie)
+router.route('/').get(getMovies).post(createMovie)
 
 router.route('/:id').get(getMovieById)
 

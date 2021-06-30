@@ -5,17 +5,15 @@
                 
             <center>
                 <div>
-                    <form @submit.prevent="handleSubmit">
-                    <h4>Upload New Movie</h4>
-                    <input type="text" required placeholder="Movie title">
-                    <input type="text" required placeholder="Movie Genre" >
-                    <textarea required placeholder="Movie description..." ></textarea>
-                    <!-- upload playlist image -->
-                    <label label>Upload Movie Cover Image</label>
-                    <input type="file">
-                    <div div class="error"></div>
+                    <form enctype="multipart/form-data" @submit.prevent="sendFile"  >
+                      <h4>Upload New Movie</h4>
+                      
+                    
+                      <label for="file" class="label">Upload Movie Poster</label>
+                      <input type="file" ref="file" @change="selectFile" >
+                      
 
-                    <button>Upload</button>
+                      <button type="submit">Upload</button>
                     </form>
                 </div>   
                
@@ -31,10 +29,56 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    name: 'ListMovies'
+    name: 'UploadMovie',
+    data(){
+      return{
+        file: ""
+      }
+    },
+    methods:{
+      selectFile(){
+        this.file = this.$refs.file.files[0]
+      },
+      
+      async sendFile(){
+       /*  const formData = new FormData();
+       
+        formData.append('file', this.file); */
+        try{
+       /*    const config ={
+            headers:{
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+
+
+          await axios.post('http://localhost:3000/api/upload',{file: this.file}, config) */
+          const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+          let formData = new FormData();
+          formData.append('image',this.file)
+          await axios.post('http://localhost:3000/api/upload', formData, config)
+
+        }catch(err){
+          console.log(err);
+        }
+        
+      }
+    }
+    
 }
+
+
+
+
+
 </script>
+
+
+
+
+
 
 <style scoped>
   form {
