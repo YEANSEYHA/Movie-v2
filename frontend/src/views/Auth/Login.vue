@@ -1,19 +1,54 @@
 <template>
-  <form  >
+  <form action="" method="post" @submit.prevent="loginAccount" >
     <h3>Login</h3>
-    <input type="email" placeholder="Email" >
-    <input type="password" placeholder="Password" >
+    <input  type="email" placeholder="Enter Email" name="email" v-model="email" required>
+    <input type="password" placeholder="Enter Password" v-model="password" name="password" required>
     <!--Error Alert -->
     
-    <button >Log in</button>
+    <button type="submit" >Log in</button>
     
   </form>
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
-  name: 'Login'
+    name: 'Login',
+    data(){
+      return{
+        email:"",
+        password:"",
+      }
+    },
+    methods:{
+      
+      async loginAccount(){
+            const config ={
+              headers:{
+                'Content-Type': 'application/json'
+                }
+            }
+        var response = await axios.post("http://localhost:3000/api/users/login", {email:this.email,password:this.password}, config)
+
+        /* if(response.data.token){
+          document.cookie="token="+response.data.token;
+          if(response.data.isAdmin){
+            document.cookie="isAdmin="+response.data.isAdmin;
+            document.cookie="name="+response.data.name;
+            // router.push({name:"adminpage"});
+            window.location.pathname="/adminpage"
+          }else if(!response.data.isAdmin){
+            document.cookie="isAdmin="+response.data.isAdmin;
+            document.cookie="name="+response.data.name;
+            // router.push({path:"/"});
+            window.location.pathname="/";
+
+          }
+        }else{
+          alert("Invalid Account");
+        } */
+      }
+    }
 }
 </script>
 

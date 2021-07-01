@@ -1,9 +1,9 @@
 <template>
-  <form >
+  <form @click.prevent="sendPost()" >
     <h3>Sign up</h3>
-    <input type="text" placeholder="Display name" >
-    <input type="email" placeholder="Email" >
-    <input type="password" placeholder="Password" >
+    <input type="text" placeholder="Username" name="name" v-model="name" >
+    <input type="email" placeholder="Email" name="email" v-model="email">
+    <input type="password" placeholder="Password" name="password" v-model="password" >
     <div v-if="error" class="error">{{ error }}</div>
     <button v-if="!isPending">Sign up</button>
     <button v-if="isPending" disabled>Loading</button>
@@ -11,8 +11,27 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default{
-    name: 'Signup'
+    name: 'Signup',
+    data(){
+      return{
+        name: '',
+        email: '',
+        password: ''
+      }
+    },
+    methods:{
+      async sendPost(){
+        const postData ={name: this.name, email:this.email, password:this.password};
+        await axios
+          .post("http://localhost:3000/api/users/signup", postData)
+          .then(res =>{
+            console.log(res.body);
+          })
+      }
+
+    }
 }
 </script>
 
