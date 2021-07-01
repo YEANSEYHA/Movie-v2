@@ -5,17 +5,17 @@
                 
             <center>
                 <div>
-                    <form enctype="multipart/form-data" @submit.prevent="sendFile"  >
+                    <form enctype="multipart/form-data" @submit.prevent="sendFile" ref="file" >
                       <h4>Upload New Movie</h4>
                       
                       <label for="title" >Title</label>
-                      <input type="text" id="title" v-model="title" >
+                      <input type="text" name="title" id="title" v-model="title" >
 
                       <label for="genre" >Genre</label>
-                      <input type="genre" id="genre" v-model="genre" >
+                      <input type="genre" name="genre" id="genre" v-model="genre" >
 
                       <label for="file" class="label">Upload Movie Poster</label>
-                      <input type="file" ref="file" @change="selectFile" >
+                      <input type="file" name="image"  @change="selectFile" >
                       
 
                       <button type="submit">Upload</button>
@@ -25,10 +25,6 @@
                     
             </center>
             </table>
-            
-
-
-
 </div>
 
 </template>
@@ -47,7 +43,8 @@ export default {
     },
     methods:{
       selectFile(){
-        this.file = this.$refs.file.files[0]
+        this.file = this.$refs.file
+        
       },
       
       async sendFile(){
@@ -61,11 +58,12 @@ export default {
             }
           }
 
-
+          
           await axios.post('http://localhost:3000/api/upload',{file: this.file}, config) */
+          
           const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-          let formData = new FormData();
-          formData.append('image',this.file)
+          let formData = new FormData(this.$refs.file);
+          console.log(formData.get("image"))
           await axios.post('http://localhost:3000/api/movies', formData, config)
 
         }catch(err){
