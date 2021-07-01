@@ -8,7 +8,12 @@
                     <form enctype="multipart/form-data" @submit.prevent="sendFile"  >
                       <h4>Upload New Movie</h4>
                       
-                    
+                      <label for="title" >Title</label>
+                      <input type="text" id="title" v-model="title" >
+
+                      <label for="genre" >Genre</label>
+                      <input type="genre" id="genre" v-model="genre" >
+
                       <label for="file" class="label">Upload Movie Poster</label>
                       <input type="file" ref="file" @change="selectFile" >
                       
@@ -34,7 +39,10 @@ export default {
     name: 'UploadMovie',
     data(){
       return{
-        file: ""
+        file: "",
+        title: "",
+        genre: "",
+        selectFile: null
       }
     },
     methods:{
@@ -58,7 +66,7 @@ export default {
           const config = { headers: { 'Content-Type': 'multipart/form-data' } };
           let formData = new FormData();
           formData.append('image',this.file)
-          await axios.post('http://localhost:3000/api/upload', formData, config)
+          await axios.post('http://localhost:3000/api/movies', formData, config)
 
         }catch(err){
           console.log(err);
