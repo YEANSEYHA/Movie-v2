@@ -52,13 +52,23 @@
                     </div>
                 </div>
     </div>
-    <div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe src="https://cdn.jwplayer.com/players/uKFJ8Lzi-kjO9FMuV.html" width="100%" height="100%" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018" style="position:absolute;" allowfullscreen></iframe> </div>
 
+    <ReportSection></ReportSection>
+    <div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe src="https://cdn.jwplayer.com/players/uKFJ8Lzi-kjO9FMuV.html" width="100%" height="100%" frameborder="0" scrolling="auto" title="Real Madrid Vs Liverpool - 3 1. Match Highlights. Uefa Champions League Final 2018" style="position:absolute;" allowfullscreen></iframe> </div>
+    <CommentSection></CommentSection>
 </template>
 
 <script>
+
+import CommentSection from './CommentSection.vue'
+import ReportSection from './ReportSection.vue'
 export default {
     name: 'MovieDetail',
+    components:{
+        CommentSection,
+        ReportSection
+
+    }
 }
 </script>
 
