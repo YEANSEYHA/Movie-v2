@@ -1,29 +1,34 @@
 <template>
-    <div class="flexbox-container">
-        <div class="flexbox-item flexbox-item-1">
-            <router-link to="/dashboard/listmovies">
-             <button style="width:100%; height:50px;">Movies</button>
-            </router-link>
-
-            <br>
-            <router-link to="/dashboard/listusers">
-             <button style="width:100%; height:50px;">Users</button>
-            </router-link>
-
-            <br>
-            <router-link to="/dashboard/uploadmovie">
-             <button style="width:100%; height:50px;">UploadMovie</button>
-            </router-link>
-            
-        </div>
-        <router-view></router-view>       
-    </div>
+   <div>
+        <h1>Dashboard</h1>
+        <template v-if="!isLoading">
+          <EventCard v-for="event in events" :key="event.id" :event="event" />
+        </template>
+        <p v-else>
+          Loading events
+        </p>
+      </div>
 </template>
 
 <script>
-export default {
-  name: 'Dashboard'
-}
+import axios from 'axios'
+    import EventCard from './EventCard'
+    export default {
+      components: { EventCard },
+      data () {
+        return {
+          isLoading: true,
+          events: []
+        }
+      },
+      created () {
+        axios.get('//localhost:3000/dashboard').then(({ data }) => {
+          this.events = data.events.events
+          this.isLoading = false
+        })
+      }
+    }
+
 </script>
 
 <style scoped>

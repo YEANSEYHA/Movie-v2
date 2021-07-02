@@ -1,5 +1,5 @@
 <template>
-  <form action="" method="post" @submit.prevent="loginAccount" >
+  <form  @submit.prevent="login" >
     <h3>Login</h3>
     <input  type="email" placeholder="Enter Email" name="email" v-model="email" required>
     <input type="password" placeholder="Enter Password" v-model="password" name="password" required>
@@ -21,14 +21,17 @@ export default {
       }
     },
     methods:{
-      
-      async loginAccount(){
-            const config ={
-              headers:{
-                'Content-Type': 'application/json'
-                }
-            }
-        var response = await axios.post("http://localhost:3000/api/users/login", {email:this.email,password:this.password}, config)
+      login(){
+        this.$store.dispatch('login',{
+          email: this.email,
+          password: this.password
+        })
+        //redirect to dashboard
+        .then( () =>{
+          this.$router.push({ name: 'Dashboard'})
+        })
+      }
+    
 
         /* if(response.data.token){
           document.cookie="token="+response.data.token;
@@ -47,7 +50,7 @@ export default {
         }else{
           alert("Invalid Account");
         } */
-      }
+      
     }
 }
 </script>

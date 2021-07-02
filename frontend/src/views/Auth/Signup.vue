@@ -26,6 +26,10 @@ export default{
           email: this.email,
           password: this.password
         })
+        // redirect to the dashboard
+        .then( () =>{
+          this.$router.push({ name: 'Dashboard'})
+        })
       }
 
     }
