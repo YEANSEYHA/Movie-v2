@@ -12,7 +12,7 @@
             <li><router-link class="btn" :to="{ name: 'Movies' }">Home</router-link></li>
             <li><router-link v-if="!loggedIn"  class="btn" :to="{ name: 'Login' }">Login</router-link></li>
             <button v-show="loggedIn" type="button" class="logoutButton" @click="logout">Logout</button>
-            <li><router-link class="btn" :to="{ name: 'Signup' }">Signup</router-link></li>
+            <li><router-link v-show="!loggedIn" class="btn" :to="{ name: 'Signup' }">Signup</router-link></li>
             <li><router-link class="btn" :to="{ name: 'User' }">Profile</router-link></li>
             <li><router-link class="btn" :to="{ name: 'Dashboard' }">Dashboard</router-link></li>
 

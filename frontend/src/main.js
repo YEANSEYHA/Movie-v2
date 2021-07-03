@@ -27,7 +27,7 @@ const store = createStore({
     actions:{
         register({commit}, credentials){
             return axios
-            .post('http://localhost:3000/register', credentials)
+            .post('http://localhost:3000/api/users', credentials)
             .then(
                 ({data}) =>{
                     commit('SET_USER_DATA', data)
