@@ -5,6 +5,8 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import generateToken from './utils/generateToken.js'
 import connectDB from './config/db.js'
+const app = express()
+
 dotenv.config()
 connectDB()
 import userRoutes from './routes/userRoutes.js'
@@ -14,7 +16,7 @@ import User from './models/userModel.js'
 import Movie from './models/movieModel.js'
 import asyncHandler from 'express-async-Handler'
 
-const app = express()
+
 
 app.use(cors())
 app.use(express.json())
@@ -37,12 +39,10 @@ app.use(bodyParser.urlencoded({ extended: false}));
 })
  */
 
- 
 
-
+app.use('/api/movies', movieRoutes)
 // Register Routes for users
 app.use('/api/users', userRoutes)
-app.use('/api/movies', movieRoutes)
 
 
 

@@ -15,6 +15,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var router = _express["default"].Router();
 
-router.route('/').post(_authMiddleware.protect, _authMiddleware.admin, _movieController.createMovie);
+router.route('/').get(_movieController.getMovies).post(_authMiddleware.protect, _authMiddleware.admin, _movieController.createMovie);
 var _default = router;
 exports["default"] = _default;

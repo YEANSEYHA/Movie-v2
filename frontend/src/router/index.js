@@ -5,10 +5,10 @@ import Dashboard from '../views/Dashboard.vue'
 
 import Login from '../views/Auth/Login.vue'
 import Signup from '../views/Auth/Signup.vue'
-import ListMovies from '../views/ListMovies.vue'
-import ListUsers from '../views/ListUsers.vue'
+
 import UploadMovie from '../views/UploadMovie.vue'
 import MovieDetail from '../views/MovieDetail.vue'
+import ListMovies from '../views/ListMovies.vue'
 const routes = [
   {
     path: '/',
@@ -46,6 +46,11 @@ const routes = [
     name: 'MovieDetail',
     component: MovieDetail
 
+  },
+  {
+    path: '/listmovies',
+    name: 'ListMovies',
+    component: ListMovies
   }
 ]
 

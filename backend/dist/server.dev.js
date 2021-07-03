@@ -26,10 +26,11 @@ var _expressAsyncHandler = _interopRequireDefault(require("express-async-Handler
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var app = (0, _express["default"])();
+
 _dotenv["default"].config();
 
 (0, _db["default"])();
-var app = (0, _express["default"])();
 app.use((0, _cors["default"])());
 app.use(_express["default"].json());
 app.use(_bodyParser["default"].urlencoded({
@@ -47,9 +48,9 @@ app.use(_bodyParser["default"].urlencoded({
   })
 })
  */
-// Register Routes for users
+
+app.use('/api/movies', _movieRoutes["default"]); // Register Routes for users
 
 app.use('/api/users', _userRoutes["default"]);
-app.use('/api/movies', _movieRoutes["default"]);
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log("Server Running in ".concat(process.env.NODE_ENV, " mode on port ").concat(PORT, " ")));

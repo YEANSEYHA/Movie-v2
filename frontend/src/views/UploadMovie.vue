@@ -2,7 +2,7 @@
   <form @submit.prevent="uploadMovie" >
     <h3>Sign up</h3>
     <input type="text" placeholder="title" name="title" v-model="title" >
-    <input type="text" placeholder="image" name="image" v-model="image">
+    <input type="text" placeholder="image url" name="image" v-model="image">
     
     <button type="submit" name="button">Upload</button>
   </form>

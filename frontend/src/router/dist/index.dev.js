@@ -17,13 +17,11 @@ var _Login = _interopRequireDefault(require("../views/Auth/Login.vue"));
 
 var _Signup = _interopRequireDefault(require("../views/Auth/Signup.vue"));
 
-var _ListMovies = _interopRequireDefault(require("../views/ListMovies.vue"));
-
-var _ListUsers = _interopRequireDefault(require("../views/ListUsers.vue"));
-
 var _UploadMovie = _interopRequireDefault(require("../views/UploadMovie.vue"));
 
 var _MovieDetail = _interopRequireDefault(require("../views/MovieDetail.vue"));
+
+var _ListMovies = _interopRequireDefault(require("../views/ListMovies.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -58,6 +56,10 @@ var routes = [{
   path: '/moviedetail',
   name: 'MovieDetail',
   component: _MovieDetail["default"]
+}, {
+  path: '/listmovies',
+  name: 'ListMovies',
+  component: _ListMovies["default"]
 }];
 var router = (0, _vueRouter.createRouter)({
   history: (0, _vueRouter.createWebHistory)(process.env.BASE_URL),
