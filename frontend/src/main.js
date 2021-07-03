@@ -7,7 +7,9 @@ import axios from 'axios'
 // Create vuex store
 const store = createStore({
     state:{
-        user: null
+        uploadingStatus: 'notLoading',
+        user: null,
+        
     },
     mutations:{
         SET_USER_DATA (state, userData){
@@ -20,7 +22,9 @@ const store = createStore({
             localStorage.removeItem('user')
             location.reload()
 
-
+        },
+        SET_MOVIE_DATA (state, movieData){
+            state.movieData = movieData
         }
     },
 
@@ -37,7 +41,7 @@ const store = createStore({
         },
         login({commit}, credentials){
             return axios
-            .post('http://localhost:3000/login', credentials)
+            .post('http://localhost:3000/api/users/login', credentials)
             .then(
                 ({data}) =>{
                     commit('SET_USER_DATA', data)
@@ -47,6 +51,16 @@ const store = createStore({
         },
         logout({commit}){
             commit('CLEAR_USER_DATA')
+        },
+        uploadMovie({commit}, movieData){
+            return axios
+            .post('http://localhost:3000/api/movies', movieData)
+            .then(
+                ({movieData}) =>{
+                    commit('SET_MOVIE_DATA', movieData)
+                    console.log('Movie data is: ', movieData)
+                }
+            )
         }
     },
     getters:{

@@ -1,11 +1,8 @@
 <template>
    <div>
         <h1>Dashboard</h1>
-        <router-link to="listusers"><div class="box"><h4>Users </h4></div></router-link>
 
-        <router-link to="listmovies"><div class="box"><h4>Movies</h4></div></router-link>
-
-        <router-link to="uploadmovie"><div class="box"><h4>Upload Movie</h4></div></router-link>
+        <router-link to="/uploadmovie"><div class="box"><h4>Upload Movie</h4></div></router-link>
         
        
     </div>
@@ -19,10 +16,10 @@ import axios from 'axios'
 
         }
       },
-      created () {
+      /* created () {
         axios.get('http://localhost:3000/dashboard').then(({ data }) => {
         })
-      }
+      } */
     }
 
 </script>

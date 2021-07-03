@@ -35,23 +35,11 @@ const routes = [
     name: 'Dashboard',
     component: Dashboard,
     meta:{ requiresAuth: true},
-    children:[
-      {
-          path:"listmovies",
-          name:"Listmovies",
-          component:ListMovies,
-      },
-      {
-        path: "listusers",
-        name: "Listusers",
-        component: ListUsers
-      },
-      {
-        path: "uploadmovie",
-        name: "UploadMovie",
-        component: UploadMovie
-      }
-    ]
+  },
+  {
+    path: '/uploadmovie',
+    name: 'UploadMovie',
+    component: UploadMovie,
   },
   {
     path: '/moviedetail',
