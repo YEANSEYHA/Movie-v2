@@ -1,30 +1,26 @@
 <template>
    <div>
         <h1>Dashboard</h1>
-        <template v-if="!isLoading">
-          <EventCard v-for="event in events" :key="event.id" :event="event" />
-        </template>
-        <p v-else>
-          Loading events
-        </p>
-      </div>
+        <router-link to="listusers"><div class="box"><h4>Users </h4></div></router-link>
+
+        <router-link to="listmovies"><div class="box"><h4>Movies</h4></div></router-link>
+
+        <router-link to="uploadmovie"><div class="box"><h4>Upload Movie</h4></div></router-link>
+        
+       
+    </div>
 </template>
 
 <script>
 import axios from 'axios'
-    import EventCard from './EventCard'
     export default {
-      components: { EventCard },
       data () {
         return {
-          isLoading: true,
-          events: []
+
         }
       },
       created () {
         axios.get('http://localhost:3000/dashboard').then(({ data }) => {
-          this.events = data.events.events
-          this.isLoading = false
         })
       }
     }
@@ -198,4 +194,24 @@ body {
     color:#ffff;
     
 }
+
+
+
+.box {
+      width: 13em;
+      margin: 1em auto 1em auto;
+      padding: 1em;
+      border: solid 1px #2c3e50;
+      cursor: pointer;
+      transition: all 0.2s linear;
+    }
+    .box:hover {
+      transform: scale(1.01);
+      box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.19);
+    }
+    .box h4 {
+      font-size: 1.4em;
+      margin-top: 0.5em;
+      margin-bottom: 0.3em;
+    }
 </style>
