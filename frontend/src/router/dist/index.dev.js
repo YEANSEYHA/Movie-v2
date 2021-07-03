@@ -23,6 +23,8 @@ var _MovieDetail = _interopRequireDefault(require("../views/MovieDetail.vue"));
 
 var _ListMovies = _interopRequireDefault(require("../views/ListMovies.vue"));
 
+var _ListUsers = _interopRequireDefault(require("../views/ListUsers.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var routes = [{
@@ -60,6 +62,10 @@ var routes = [{
   path: '/listmovies',
   name: 'ListMovies',
   component: _ListMovies["default"]
+}, {
+  path: '/listusers',
+  name: 'ListUsers',
+  component: _ListUsers["default"]
 }];
 var router = (0, _vueRouter.createRouter)({
   history: (0, _vueRouter.createWebHistory)(process.env.BASE_URL),

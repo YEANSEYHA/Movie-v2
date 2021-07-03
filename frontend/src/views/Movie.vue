@@ -15,7 +15,7 @@
 			<div class="top">
 				
 				<h5 class="title"><a href="http://localhost:8080/moviedetail">{{ movie.title }}</a></h5>
-				<span class="date">2021 </span>
+				<span class="date">{{ movie.image}} </span>
 			</div>
 			<div class="bottom">
 				<ul>
@@ -34,7 +34,12 @@
 export default {
     name: 'Movie',
 	props:{
-		movie: Object
+		movie:{
+			type: Object,
+			default:()=>{
+				return{}
+			}
+		}
 	}
 }
 </script>

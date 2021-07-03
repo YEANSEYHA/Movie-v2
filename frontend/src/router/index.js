@@ -9,6 +9,7 @@ import Signup from '../views/Auth/Signup.vue'
 import UploadMovie from '../views/UploadMovie.vue'
 import MovieDetail from '../views/MovieDetail.vue'
 import ListMovies from '../views/ListMovies.vue'
+import ListUsers from '../views/ListUsers.vue'
 const routes = [
   {
     path: '/',
@@ -51,7 +52,13 @@ const routes = [
     path: '/listmovies',
     name: 'ListMovies',
     component: ListMovies
-  }
+  },
+  {
+    path: '/listusers',
+    name: 'ListUsers',
+    component: ListUsers
+  },
+
 ]
 
 const router = createRouter({

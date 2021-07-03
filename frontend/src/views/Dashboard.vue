@@ -3,6 +3,8 @@
         <h1>Dashboard</h1>
         <router-link to="/listmovies"><div class="box"><h4>Manage Movies</h4></div></router-link>
 
+        <router-link to="/listusers"><div class="box"><h4>Manage Users</h4></div></router-link>
+
         <router-link to="/uploadmovie"><div class="box"><h4>Upload Movie</h4></div></router-link>
         
         

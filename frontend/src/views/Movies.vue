@@ -18,10 +18,10 @@ export default {
     components: {
         Movie,
     },
-data(){
-    return{
+    data(){
+        return{
       movies: []
-    }
+        }
   },
   created(){
     this.movies = [
